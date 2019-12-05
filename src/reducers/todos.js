@@ -1,3 +1,7 @@
+
+
+
+// the state is stared in a variable called todos, which can be accessed from a component as state.todos
 const todos = (state = [], action) => {
  switch (action.type) {
     case 'ADD_TODO':

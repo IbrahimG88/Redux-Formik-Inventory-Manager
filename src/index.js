@@ -11,6 +11,8 @@ import { addTodo } from './actions/index';
 
 import devToolsEnhancer from 'remote-redux-devtools';
 
+import ConnectedTrialComponent from "./containers/trialComponent";
+
 const MyForm = props => {
     const {
         values,
@@ -20,6 +22,8 @@ const MyForm = props => {
         handleBlur,
         handleSubmit,
     } = props;
+    //retrieving from the store using mapStateToProps, my props:
+
     return (
         <form onSubmit={handleSubmit}>
             <input
@@ -31,6 +35,7 @@ const MyForm = props => {
             />
             {errors.name && touched.name && <div id="feedback">{errors.name}</div>}
             <button type="submit">Submit</button>
+            <ConnectedTrialComponent />
         </form>
     );
 };
@@ -48,6 +53,7 @@ const MyEnhancedForm = withFormik({
 
         return errors;
     },
+
 
     handleSubmit: (values, { props,setSubmitting }) => {
 
@@ -69,6 +75,8 @@ const MyEnhancedForm = withFormik({
     displayName: 'BasicForm',
 })(MyForm);
 
+
+
 const FullComponent = connect()(MyEnhancedForm);
 export default FullComponent;
 
@@ -85,6 +93,7 @@ class Game extends React.Component {
                     <div>{/* status */}</div>
                     <ol>{/* TODO */}</ol>
                 </div>
+
             </div>
         );
     }
